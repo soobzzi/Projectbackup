@@ -19,7 +19,9 @@ public interface PlantDao {
 	public void completeQuest(int questNo) throws Exception; 
 	
 	
-	public void addPlant(Plant plant) throws Exception;
+	public void addPlantName(Plant plant) throws Exception;
+	
+	public void addPlantLevl(Plant plant) throws Exception;
 	
 	public void deletePlant(int plantNo) throws Exception;
 	
