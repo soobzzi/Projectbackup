@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <!DOCTYPE mapper
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -29,9 +27,9 @@
 	<!-- GET MYPLANTliST -->
 	<select id="getMyPlantList" parameterType = "map" >
 		SELECT 
-		m.my_plant_no, m.my_plant_state , m.plant_start_date, m.plant_end_date , le.plant_levl , le.levl_Img , u.nickname, le.plant_max_exp,le.plant_min_exp
+			m.my_plant_no, m.my_plant_state , m.plant_start_date, m.plant_end_date , le.plant_levl , le.levl_Img , u.nickname, le.plant_max_exp,le.plant_min_exp
     	FROM 
-    	my_plant m , plant_levl le , user u
+    		my_plant m , plant_levl le , user u
   	 	WHERE m.plant_no = le.plant_no
    		AND u.nickname = m.nickname
    		AND my_plant_exp between #{plant_min_exp} and #{plant_max_exp};
@@ -48,8 +46,14 @@
 
 	</select>
 	
-	<delete id ="" >
-	</delete>
+	<update id="updateMyPlant" parameterType="String">
+		UPDATE myplant
+	   	<set>
+	   		my_plant_name 	= #{myPlantName} 
+	   	</set>
+	   	WHERE my_Plant_no = #{myPlantNo}
+	 </update>
+	
 	
 	
 	

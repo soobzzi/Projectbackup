@@ -1,1 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace = "PlantMapper">
+	
+	<resultMap id="PlantSelectMap" type="plant" >
+		<result property="myPlantNo" 		column="my_plant_no" 		jdbcType="INTEGER"/>
+		<result property="myPlantState"		column="my_plant_state" 	jdbcType="VARCHAR" />
+		<result property="myPlantName" 		column="my_plant_name" 		jdbcType="VARCHAR" />
+		<result property="myPlantExp" 		column="my_plant_exp" 		jdbcType="INTEGER" />
+		<result property="plantStartDate" 	column="plant_start_date" 	jdbcType="DATE" />
+		<result property="plantEndDate"		column="plant_end_date"		jdbcType="DATE"/>
+	</resultMap>
+	
+	<!-- GET RANDOM MYPLANT -->
+	<select id="getMyPlant" parameterType="myPlant">
+		SELECT * FROM plant
+		WHERE plant_no IN ( SELECT plant_no
+							FROM plant_levl
+							WHERE plant_levl = '새싹')
+		ORDER BY RAND()
+		limit 1
+	</select>
+	
+	
+	
+</mapper>
+			
